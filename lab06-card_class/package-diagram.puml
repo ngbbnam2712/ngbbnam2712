@@ -1,0 +1,40 @@
+@startuml
+title Package Diagram - Trello Mini
+
+' =================== Account ===================
+package "account" {
+    class User
+    class AuthService
+}
+
+' =================== Board ===================
+package "board" {
+    class Board
+    class Membership
+}
+
+' =================== List ===================
+package "list" {
+    class List
+}
+
+' =================== Card ===================
+package "card" {
+    class Card
+}
+
+' =================== Database ===================
+package "database" {
+    class Database
+}
+
+' ===== Quan hệ giữa các package =====
+account ..> database
+board ..> account
+board ..> database
+list ..> board
+list ..> database
+card ..> list
+card ..> database
+
+@enduml

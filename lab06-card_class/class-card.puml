@@ -1,0 +1,72 @@
+@startuml
+title Class Diagram - Trello Mini
+
+class User {
+    +int userId
+    +String name
+    +String email
+    +String password
+    +dangKy()
+    +dangNhap()
+    +capNhatThongTin()
+    +dangXuat()
+}
+
+class Board {
+    +int boardId
+    +String title
+    +int ownerId
+    +taoBang()
+    +chinhSua()
+    +xoa()
+    +themThanhVien()
+}
+
+class List {
+    +int listId
+    +String title
+    +int boardId
+    +taoDanhSach()
+    +chinhSua()
+    +xoa()
+}
+
+class Card {
+    +int cardId
+    +String title
+    +String description
+    +Date dueDate
+    +int listId
+    +taoThe()
+    +chinhSua()
+    +xoa()
+}
+
+class Membership {
+    +int userId
+    +int boardId
+    +String role
+}
+
+class AuthService {
+    +dangKy()
+    +dangNhap()
+    +dangXuat()
+}
+
+class Database {
+    +luuDuLieu()
+    +truyXuatDuLieu()
+}
+
+User "1" -- "*" Membership : thamGia
+Board "1" -- "*" Membership : quanLy
+Board "1" -- "*" List : chua
+List "1" -- "*" Card : chua
+AuthService --> User : quanLy
+AuthService --> Database : suDung
+Board --> Database : suDung
+List --> Database : suDung
+Card --> Database : suDung
+
+@enduml
